@@ -1,4 +1,4 @@
-# sampleworkout
+# keyboard-speed-test
 
 A new Flutter project.
 
