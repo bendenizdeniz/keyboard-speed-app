@@ -1,6 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:sampleworkout/home_page.dart';
+import 'package:sampleworkout/game.dart';
+import 'package:sampleworkout/home.dart';
+
+//Faydalanılan Kaynak: https://www.youtube.com/watch?v=aKgEEnVhU1I
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -33,6 +36,10 @@ class _LoginState extends State<Login> {
     TextEditingController _emailController = TextEditingController();
     TextEditingController _passwordController = TextEditingController();
     return Scaffold(
+      appBar: AppBar(
+          title: new Center(
+              child:
+                  new Text("My Tools App Login", textAlign: TextAlign.center))),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -44,12 +51,15 @@ class _LoginState extends State<Login> {
               //         color: Colors.black,
               //         fontSize: 28.0,
               //         fontWeight: FontWeight.bold)),
-              const Text(
-                "Login to Speed Test",
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 44.0,
-                    fontWeight: FontWeight.bold),
+              Center(
+                child: const Text(
+                  "Login",
+                  style: TextStyle(
+                    color: Colors.blue,
+                    fontSize: 30.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
               const SizedBox(
                 height: 44.0,
@@ -59,7 +69,7 @@ class _LoginState extends State<Login> {
                 keyboardType: TextInputType.emailAddress,
                 decoration: const InputDecoration(
                   hintText: "User Email",
-                  prefixIcon: Icon(Icons.mail, color: Colors.black),
+                  prefixIcon: Icon(Icons.mail, color: Colors.blue),
                 ),
               ),
               const SizedBox(
@@ -70,7 +80,7 @@ class _LoginState extends State<Login> {
                 obscureText: true,
                 decoration: const InputDecoration(
                   hintText: "User Password",
-                  prefixIcon: Icon(Icons.lock, color: Colors.black),
+                  prefixIcon: Icon(Icons.lock, color: Colors.blue),
                 ),
               ),
               Container(
@@ -78,7 +88,7 @@ class _LoginState extends State<Login> {
                 width: double.infinity,
                 child: RawMaterialButton(
                   padding: const EdgeInsets.symmetric(vertical: 30.0),
-                  fillColor: const Color(0xFF0069FE),
+                  fillColor: Colors.blue,
                   elevation: 0.0,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12.0)),
@@ -89,8 +99,8 @@ class _LoginState extends State<Login> {
                         context: context);
                     print(user);
                     if (user != null) {
-                      Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(builder: (context) => MyAppHome()));
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => HomeScreen()));
                     }
                   },
                   child: const Text(

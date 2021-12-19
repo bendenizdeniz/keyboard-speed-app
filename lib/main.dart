@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:sampleworkout/home_page.dart';
+import 'package:sampleworkout/calculator_page.dart';
+import 'package:sampleworkout/game.dart';
+import 'package:sampleworkout/home.dart';
 import 'package:sampleworkout/login.dart';
 
 void main() async {

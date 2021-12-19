@@ -3,14 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:marquee/marquee.dart';
 import 'dart:async';
 
-class MyAppHome extends StatefulWidget {
+//Faydalanılan Kaynak: https://camposha.info/flutter/flutter-marquee/#gsc.tab=0
+// https://www.youtube.com/watch?v=wsiArTIqetE&t=8742s
+
+class KeyboardSpeedGame extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _MyAppHomeState();
+    return _KeyboardSpeedGameState();
   }
 }
 
-class _MyAppHomeState extends State<MyAppHome> {
+class _KeyboardSpeedGameState extends State<KeyboardSpeedGame> {
   String lorem =
       "                                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
           .toLowerCase()
@@ -31,7 +34,8 @@ class _MyAppHomeState extends State<MyAppHome> {
     setState(() {
       updateLastTypedAt();
       //step++;
-      step = 1;
+      //step=1;
+      step = stepGettingInput;
     });
     var timer = Timer.periodic(new Duration(seconds: 1), (timer) {
       int now = DateTime.now().millisecondsSinceEpoch;
@@ -69,11 +73,12 @@ class _MyAppHomeState extends State<MyAppHome> {
       score = 0;
       step = stepGettingInput;
     });
+    onStartClick();
   }
 
   @override
   Widget build(BuildContext context) {
-    var stepZeroWidget = <Widget>[
+    var stepZeroWidget = [
       Text('Welcome keyboard speed test game!'),
       Container(
         padding: EdgeInsets.only(top: 20),
@@ -144,8 +149,16 @@ class _MyAppHomeState extends State<MyAppHome> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Keyboard Speed Test'),
-      ),
+          title: Center(
+            child: Text("My Tool Keyboard Speed Test Game",
+                textAlign: TextAlign.center),
+          ),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          )),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
